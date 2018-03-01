@@ -7,17 +7,17 @@
    */
   angular.module('LunchCheck', [])
     // define controller for checking lunch
-    .controller('LunchCheckerCtrl', LunchCheckerCtrl)
+    .controller('LunchCheckController', LunchCheckController)
     ;
 
   // inject dependencies to guard against minification
-  LunchCheckerCtrl.$inject = ['$scope'];
+  LunchCheckController.$inject = ['$scope'];
 
   /**
    * function to define the LunchCheckerCtrl controller
    * @param {*}  angular services required
    */
-  function LunchCheckerCtrl($scope) {
+  function LunchCheckController($scope) {
 
     $scope.lunchList = '';
     $scope.message = '';
