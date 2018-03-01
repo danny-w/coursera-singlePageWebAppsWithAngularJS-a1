@@ -22,13 +22,20 @@
     $scope.lunchList = '';
     $scope.message = '';
     $scope.details = '';
+    $scope.color = ''; // can be success, warn or danger
+
+    $scope.border = function () {
+      if ($scope.color == '') return '';
+      return 'color: ' + $scope.color + '; border: 1px solid ' + $scope.color + ';';
+    }
 
     $scope.checkCount = function () {
       $scope.clearMessage();
 
       //console.log('list: "' + $scope.lunchList + '"');
       if ($scope.lunchList == '') {
-        $scope.message = 'Please enter data first!'
+        $scope.color = 'danger';
+        $scope.message = 'Please enter data first!';
         //console.log('empty');
       } else {
         //console.log('not empty');
@@ -37,6 +44,7 @@
         //console.log(res);
 
         if (res.words.length == 0) {
+          $scope.color = 'danger';
           $scope.message = 'Please enter items seperated by comma!';
         } else {
           $scope.details =
@@ -46,8 +54,10 @@
             if (res.numDuplicates > 0) {
               $scope.message = 'Duplicates don\'t count. ';
             }
+            $scope.color = 'success';
             $scope.message += 'Enjoy!';
           } else {
+            $scope.color = 'warn';
             $scope.message = 'Too much!';
           }
         }
@@ -57,6 +67,7 @@
     $scope.clearMessage = function () {
       $scope.message = '';
       $scope.details = '';
+      $scope.color = '';
     }
   }
 

@@ -9,11 +9,30 @@
     .message {
       font-size: 1.3em;
       font-weight: bold;
+      padding: 0.2em;
+    }
+    .success {
+      color: #008000;
+      border: 1px solid #008000;
+    }
+    .warn {
+      color: #e68a00;
+      border: 1px solid #e68a00;
+    }
+    .danger {
+      color: #ff1a1a;
+      border: 1px solid #ff1a1a;
     }
     .details {
       font-size: 0.9em;
       font-style: italic;
       color: rgb(95, 93, 93);
+    }
+    p {
+      font-size: 0.85em;
+      color: rgb(77, 70, 70);
+      margin: 0.2em;
+      margin-left: 1em;
     }
   </style>
 </head>
@@ -26,15 +45,23 @@
       <input id="lunch-menu" type="text" class="form-control"
         placeholder="list comma separated dishes you usually have for lunch"
         ng-model="lunchList" ng-focus="clearMessage()">
+
+      <p><b>Empty strings, extra spaces and duplicates are all ignored!</b></p>
+      <p>
+        <i>",&nbsp;&nbsp;&nbsp;,a&nbsp;&nbsp;,a&nbsp;,b,,,,b,a&nbsp;,"</i>
+         &nbsp; is equivilant to &nbsp;<i>[a, b]</i>
+      </p>
     </div>
+    <hr>
     <div class="form-group">
       <button class="btn btn-default" ng-click="checkCount()">Check If Too Much</button>
     </div>
+    <hr>
     <div class="form-group details">
       {{details}}
     </div>
 
-    <div class="form-group message">
+    <div class="form-group message {{color}}">
       {{message}}
     </div>
   </div>
